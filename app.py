@@ -227,7 +227,7 @@ def main():
 
     # Take a file and an email from the command line
     # run_service()
-    app.run(debug=True)
+    app.run(debug=False)
 
 
 
