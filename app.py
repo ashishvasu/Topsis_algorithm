@@ -227,7 +227,8 @@ def main():
 
     # Take a file and an email from the command line
     # run_service()
-    app.run(debug=False)
+    port = os.environ.get("PORT", 5000)
+    app.run(host="0.0.0.0", port=port)
 
 
 
