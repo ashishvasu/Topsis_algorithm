@@ -2,11 +2,18 @@ from flask import Flask, render_template
 
 import smtplib
 import json
+import sys
 
 from email.message import EmailMessage
 
 from flask.globals import request
+import os
+import logging
 
+
+app = Flask(__name__)
+UPLOAD_FOLDER = "./input_files/"
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 from Cmd_implementation import generate_matrix, apply_TOPSIS, write_result_in_output_file
 
@@ -104,7 +111,8 @@ def run_service(input_data, weights, impacts, user_email):
 ##################### MAKE IT A FLASK APP ################
 
 ##### Lets create an app here
-app = Flask(__name__)
+
+
 
 def is_file_valid(filename):
     allowed_extensions = ['txt', 'csv']
@@ -117,10 +125,8 @@ def is_file_valid(filename):
 
 
 ############### Configure an upload path for files
-UPLOAD_FOLDER = "/home/rishabh/Documents/course_work/8th_sem/lab_practical/data_mining_lab/Practical5/Lab Assignment 05/Input files for Assignment05/"
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
-import os
+
 # from werkzeug.utils import secure_filename
 ######## make a default rou
 def validate(input_data, weights, impacts, user_email):
