@@ -12,7 +12,7 @@ import logging
 
 
 app = Flask(__name__)
-UPLOAD_FOLDER = "./input_files/"
+UPLOAD_FOLDER = "./"
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 
@@ -240,7 +240,7 @@ def main():
     # Take a file and an email from the command line
     # run_service()
     port = os.environ.get("PORT", 5000)
-    app.run(host="0.0.0.0", port=port)
+    app.run(host="0.0.0.0", port=port, debug=True)
 
 
 
