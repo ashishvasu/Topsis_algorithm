@@ -15,6 +15,10 @@ app = Flask(__name__)
 UPLOAD_FOLDER = "./input_files/"
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
+
+app.logger.addHandler(logging.StreamHandler(sys.stdout))
+app.logger.setLevel(logging.ERROR)
+
 from Cmd_implementation import generate_matrix, apply_TOPSIS, write_result_in_output_file
 
 ##########################################################################
@@ -187,6 +191,8 @@ def default_page():
         if is_file_valid(data_file.filename):
             
             res_path = os.path.join(app.config['UPLOAD_FOLDER'], data_file.filename)
+
+            print(res_path)
 
             data_file.save(res_path)
 
