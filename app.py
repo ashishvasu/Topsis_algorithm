@@ -7,8 +7,14 @@ import sys
 from email.message import EmailMessage
 
 from flask.globals import request
+
+
 import os
 import logging
+
+
+from dotenv import load_dotenv
+load_dotenv()
 
 
 app = Flask(__name__)
@@ -23,17 +29,20 @@ from Cmd_implementation import generate_matrix, apply_TOPSIS, write_result_in_ou
 
 ##########################################################################
 
-def get_email_and_password(config_file_path):
+def get_email_and_password():
 
-    config_file = open(config_file_path)
+    # config_file = open(config_file_path)
     
-    config_file_content = config_file.read()
+    # config_file_content = config_file.read()
 
-    credentials = json.loads(config_file_content)
+    # credentials = json.loads(config_file_content)
 
-    MY_EMAIL = credentials['email']
+    MY_EMAIL = os.getenv('EMAIL')
+    MY_PASSWORD = os.getenv('PASSWORD')
+    print(MY_EMAIL)
+    print(MY_PASSWORD)
     
-    MY_PASSWORD = credentials['password']
+    # MY_PASSWORD = os.environ['PASSWORD']
 
     return MY_EMAIL, MY_PASSWORD
 
@@ -69,7 +78,7 @@ def construct_email_message(from_ ,to_, attachments) -> EmailMessage:
 def send_email(recipient_email, result_filename):
 
     # Read email and password from config
-    MY_EMAIL, MY_PASSWORD = get_email_and_password('config.json')
+    MY_EMAIL, MY_PASSWORD = get_email_and_password()
 
     
     with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
@@ -240,7 +249,7 @@ def main():
     # Take a file and an email from the command line
     # run_service()
     port = os.environ.get("PORT", 5000)
-    app.run(host="0.0.0.0", port=port, debug=True)
+    app.run(host="0.0.0.0", port=port, debug=False)
 
 
 
