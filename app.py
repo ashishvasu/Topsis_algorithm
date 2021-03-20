@@ -147,12 +147,7 @@ def validate(input_data, weights, impacts, user_email):
     ##################### check if weights are valid #######
     ## find non negative value in weights
     weights_copy = weights.split(',')
-    # def is_valid_weight(w):
-    #     return isinstance(w, int) or isinstance(w, float)
 
-    # non_numerical_weights = [val for val in weights_copy if not is_valid_weight(val)] ## type(va)
-    # if non_numerical_weights:
-    #     errors.append("Weights can be numerical values only")
     try:
         [float(val) for val in weights_copy]
     except ValueError:
@@ -233,7 +228,7 @@ def default_page():
 
 
         else:
-            return render_template('data_form.html')
+            return render_template('data_form.html', my_errors = ['File not valid']) 
 
         
 
@@ -248,7 +243,7 @@ def main():
     # Take a file and an email from the command line
     # run_service()
     port = os.environ.get("PORT", 5000)
-    app.run(host="0.0.0.0", port=port, debug=False)
+    app.run(host="0.0.0.0", port=port, debug=True)
 
 
 
