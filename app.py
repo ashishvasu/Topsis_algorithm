@@ -39,8 +39,7 @@ def get_email_and_password():
 
     MY_EMAIL = os.getenv('EMAIL')
     MY_PASSWORD = os.getenv('PASSWORD')
-    print(MY_EMAIL)
-    print(MY_PASSWORD)
+
     
     # MY_PASSWORD = os.environ['PASSWORD']
 
