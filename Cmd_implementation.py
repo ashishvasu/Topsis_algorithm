@@ -2,6 +2,8 @@
 '''
 Command line implementation of the TOPSIS algorithm
 Author: Rishabh Katna
+
+Link for web service for TOPSIS algorithm : https://topsis-rkatna.herokuapp.com/
 '''
 import sys
 

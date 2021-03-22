@@ -90,7 +90,9 @@ def send_email(recipient_email, result_filename):
         
             msg = construct_email_message(MY_EMAIL, recipient_email, [result_filename])
 
-            smtp.send_message(msg)
+            smtp.send_message(msg)            
+
+        
 
         smtp.close()
 
