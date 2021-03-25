@@ -1,4 +1,4 @@
-The web appication for this project is deployed on 
+The web appication for this project is deployed on  
 https://ashishvasu.github.io/Topsis_algorithm1/.
 
 ##### To run the command line version:
