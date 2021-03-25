@@ -1,5 +1,5 @@
 The web appication for this project is deployed on 
-https://topsis-rkatna.herokuapp.com/
+https://ashishvasu.github.io/Topsis_algorithm1/.
 
 ##### To run the command line version:
 1. `python3 Cmd_Implementation.py <InputFilePath> <Weights> <Impacts> <Output filename>`
